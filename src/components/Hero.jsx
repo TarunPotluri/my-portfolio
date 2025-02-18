@@ -39,7 +39,7 @@ export const Hero = () => {
             <img
 
 
-              src="/my-portfolio/Tarun.jpg"
+              src="Tarun.jpg"
 
               alt="Tarun Potluri"
               className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-xl 

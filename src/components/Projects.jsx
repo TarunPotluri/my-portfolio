@@ -7,13 +7,13 @@ export const Projects = () => {
     {
       title: "Voice Assistant",
       description: "Developed a voice assistant using Python with libraries like SpeechRecognition and PyTorch for NLP.",
-      image: "/my-portfolio/voice.jpg",
+      image: "voice.jpg",
       tags: ["Python", "NLP", "Speech Recognition"]
     },
     {
       title: "SLAM Algorithm",
       description: "Advanced Simultaneous Localization and Mapping algorithm for autonomous robot navigation.",
-      image: "/my-portfolio/slam.png",
+      image: "slam.png",
       tags: ["Robotics", "Computer Vision", "Path Planning"]
     }
   ];
