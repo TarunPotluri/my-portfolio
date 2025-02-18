@@ -15,7 +15,7 @@ export const About = () => {
       description: "Advanced proficiency in Python ecosystem (Pandas, NumPy, scikit-learn, TensorFlow) with focus on scalable and secure cloud implementations. Experienced in developing and deploying machine learning models for real-world applications."
     },
     {
-      title: "DJ & Music Producer",
+      title: "DJ & Music Production",
       icon: <Music className="w-6 h-6" />,
       description: "Beyond coding, I'm an enthusiastic DJ creating captivating mixes that energize dance floors. My love for music brings rhythm and harmony to both my creative and technical work."
     },
