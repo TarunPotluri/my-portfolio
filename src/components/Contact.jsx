@@ -117,7 +117,7 @@ export const Contact = () => {
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity"
               >
                 <Instagram className="w-5 h-5" />
-                <span>@tarunpotluri_</span>
+                <span>@_tarun.potluri_</span>
               </motion.a>
             </div>
           </motion.div>
