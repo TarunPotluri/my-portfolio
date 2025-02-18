@@ -4,23 +4,14 @@ import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Float } from '@react-three/drei';
 
-const FloatingCube = () => (
-  <Float speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
-    <mesh>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#6366f1" />
-    </mesh>
-  </Float>
-);
-
 export const Hero = () => {
   const handleExploreClick = () => {
-    // Smooth scroll to projects section
     document.getElementById('projects').scrollIntoView({ 
       behavior: 'smooth',
       block: 'start'
     });
   };
+
   return (
     <section id="about" className="h-screen relative overflow-hidden bg-white dark:bg-gray-900">
       {/* 3D Background */}
@@ -29,13 +20,19 @@ export const Hero = () => {
           <OrbitControls enableZoom={false} />
           <ambientLight intensity={0.5} />
           <directionalLight position={[10, 10, 5]} intensity={1} />
-          <FloatingCube />
+          <Float speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
+            <mesh>
+              <boxGeometry args={[1, 1, 1]} />
+              <meshStandardMaterial color="#6366f1" />
+            </mesh>
+          </Float>
         </Canvas>
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full">
-      <motion.div
+        {/* Profile Image with Effects */}
+        <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -48,18 +45,20 @@ export const Hero = () => {
           <div className="relative group overflow-hidden rounded-full">
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-spin-slow"></div>
             <img
-              src="Tarun.jpg"
+              src="/Tarun.jpg"
               alt="Tarun Potluri"
               className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-gray-900 
-                        transition-transform duration-500 ease-in-out
-                        group-hover:scale-125 group-hover:rotate-3
-                        hover:border-indigo-500"
+                       transition-transform duration-500 ease-in-out
+                       group-hover:scale-125 group-hover:rotate-3
+                       hover:border-indigo-500"
               style={{
                 boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)',
               }}
             />
           </div>
         </motion.div>
+
+        {/* Text Content */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,7 +76,7 @@ export const Hero = () => {
             whileTap={{ scale: 0.95 }}
             onClick={handleExploreClick}
             className="bg-indigo-600 text-white px-8 py-3 rounded-full text-lg font-semibold 
-                       hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl"
+                     hover:bg-indigo-700 transition-colors cursor-pointer"
           >
             Explore My Work
           </motion.button>
