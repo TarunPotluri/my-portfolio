@@ -36,29 +36,30 @@ export const Hero = () => {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full">
       <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="relative mb-8"
-      >
-        {/* Outer glow effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 blur-xl opacity-50 animate-pulse"></div>
-        
-        {/* Inner container with border */}
-        <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-spin-slow"></div>
-          <img
-            src="Tarun.jpg"
-            alt="Tarun Potluri"
-            className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-gray-900 
-                      hover:scale-105 transition-transform duration-300
-                      hover:border-indigo-500"
-            style={{
-              boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)',
-            }}
-          />
-        </div>
-      </motion.div>
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="relative mb-8"
+        >
+          {/* Outer glow effect */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 blur-xl opacity-50 animate-pulse"></div>
+          
+          {/* Inner container with border */}
+          <div className="relative group overflow-hidden rounded-full">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-spin-slow"></div>
+            <img
+              src="Tarun.jpg"
+              alt="Tarun Potluri"
+              className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-gray-900 
+                        transition-transform duration-500 ease-in-out
+                        group-hover:scale-125 group-hover:rotate-3
+                        hover:border-indigo-500"
+              style={{
+                boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)',
+              }}
+            />
+          </div>
+        </motion.div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
