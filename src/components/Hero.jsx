@@ -37,7 +37,7 @@ export const Hero = () => {
           <div className="relative">
             {/* Larger image size with glow effect */}
             <img
-              src="/Tarun.jpg"
+              src="/my-portfolio/Tarun.jpg"
               alt="Tarun Potluri"
               className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-xl 
                          hover:scale-105 transition-transform duration-300
