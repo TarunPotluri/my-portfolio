@@ -45,7 +45,7 @@ export const Hero = () => {
           <div className="relative group overflow-hidden rounded-full">
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-spin-slow"></div>
             <img
-              src="/Tarun.jpg"
+              src="Tarun.jpg"
               alt="Tarun Potluri"
               className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-gray-900 
                        transition-transform duration-500 ease-in-out
