@@ -1,15 +1,105 @@
+/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  .dark body {
+    @apply bg-[#0A0A0A] text-white;
+  }
 }
 
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500;
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600;
+  }
+
+  .dark .gradient-text {
+    @apply from-blue-400 via-purple-400 to-pink-400;
+  }
+
+  .glass-effect {
+    @apply bg-black/5 backdrop-blur-md border border-black/10;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .dark .glass-effect {
+    @apply bg-white/10 border-white/20;
+  }
+
+  .button-glow {
+    @apply shadow-lg shadow-blue-600/25 hover:shadow-blue-600/50;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .dark .button-glow {
+    @apply shadow-blue-500/25 hover:shadow-blue-500/50;
+  }
 }
 
-.transition-all {
-  @apply transition-colors duration-300 ease-in-out;
+/* Custom scroll bar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-600/50 rounded-full hover:bg-blue-600/70;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-blue-500/50 hover:bg-blue-500/70;
+}
+
+/* Additional utility classes */
+.hover-lift {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  @apply shadow-lg;
+}
+
+.card-hover {
+  @apply hover:bg-black/5;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.dark .card-hover {
+  @apply hover:bg-white/15;
+}
+
+.nav-item {
+  @apply text-gray-600 hover:text-gray-900;
+  transition: color 0.3s ease-in-out;
+}
+
+.dark .nav-item {
+  @apply text-gray-400 hover:text-white;
+}
+
+.section-padding {
+  @apply py-20 px-4 sm:px-6 lg:px-8;
+}
+
+.container-width {
+  @apply max-w-7xl mx-auto;
 }
