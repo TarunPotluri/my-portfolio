@@ -74,11 +74,11 @@ export const Contact = () => {
               </div>
               <div>
                 <p className="text-gray-400">Instagram</p>
-                <a href="https://instagram.com/tarunpotluri_" 
+                <a href="https://instagram.com/_tarun.potluri_" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="text-xl font-semibold gradient-text">
-                  @tarunpotluri_
+                  @_tarun.potluri_
                 </a>
               </div>
             </div>
