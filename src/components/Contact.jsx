@@ -2,21 +2,54 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Send, Instagram } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
-export const Contact = () => {
+const Contact = () => {
   const [formStatus, setFormStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    user_name: '',
+    user_email: '',
+    message: ''
+  });
 
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormStatus('sending');
 
     try {
-      // Email.js implementation here
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulated delay
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
+        formData, 
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log('Email sent successfully:', response);
+      
+      // Handle successful submission
       setFormStatus('success');
+      
+      // Reset form
+      setFormData({
+        user_name: '',
+        user_email: '',
+        message: ''
+      });
     } catch (error) {
+      console.error('EmailJS Error:', error);
       setFormStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -74,10 +107,12 @@ export const Contact = () => {
               </div>
               <div>
                 <p className="text-gray-400">Instagram</p>
-                <a href="https://instagram.com/_tarun.potluri_" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   className="text-xl font-semibold gradient-text">
+                <a 
+                  href="https://instagram.com/_tarun.potluri_" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-xl font-semibold gradient-text"
+                >
                   @_tarun.potluri_
                 </a>
               </div>
@@ -89,7 +124,6 @@ export const Contact = () => {
             onSubmit={handleSubmit}
             className="space-y-6"
           >
-            {/* Form Fields */}
             <div className="space-y-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -100,6 +134,8 @@ export const Contact = () => {
                 <input
                   type="text"
                   name="user_name"
+                  value={formData.user_name}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg glass-effect bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={isSubmitting}
@@ -115,6 +151,8 @@ export const Contact = () => {
                 <input
                   type="email"
                   name="user_email"
+                  value={formData.user_email}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg glass-effect bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={isSubmitting}
@@ -129,6 +167,8 @@ export const Contact = () => {
                 <label className="block text-gray-400 mb-2">Message</label>
                 <textarea
                   name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows={5}
                   required
                   className="w-full px-4 py-3 rounded-lg glass-effect bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
