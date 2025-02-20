@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export const HeroBackground = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden z-10">
       {/* Animated Gradient Orbs */}
       <motion.div 
         animate={{

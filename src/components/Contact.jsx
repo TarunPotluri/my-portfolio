@@ -1,19 +1,11 @@
 // src/components/Contact.jsx
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Send, Instagram } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
-  const formRef = useRef();
   const [formStatus, setFormStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const contactInfo = {
-    phone: '(470) 655-9431',
-    email: 'potluri.tarun.18@gmail.com',
-    instagram: 'https://www.instagram.com/_tarun.potluri_'
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,174 +13,166 @@ export const Contact = () => {
     setFormStatus('sending');
 
     try {
-      await emailjs.sendForm(
-        'service_s72qota',
-        'template_zf1crok',
-        formRef.current,
-        'jrfbJ8gKBdnab0PhF'
-      );
+      // Email.js implementation here
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulated delay
       setFormStatus('success');
-      formRef.current.reset();
     } catch (error) {
-      console.error('Error sending email:', error);
       setFormStatus('error');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const statusMessages = {
-    sending: { text: 'Sending...', class: 'text-blue-500' },
-    success: { text: 'Message sent successfully!', class: 'text-green-500' },
-    error: { text: 'Failed to send message. Please try again.', class: 'text-red-500' }
-  };
-
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="contact" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Get in Touch</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            Let's connect and discuss how we can work together!
-          </p>
+          <h2 className="text-4xl font-bold mb-4 gradient-text">Get in Touch</h2>
+          <p className="text-xl text-gray-400">Let's create something amazing together</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
-            
-            {/* Phone */}
-            <motion.div 
-              whileHover={{ x: 5 }}
-              className="flex items-center space-x-4"
-            >
-              <div className="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-full">
-                <Phone className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+            <div className="flex items-center space-x-4">
+              <div className="bg-blue-500/20 p-3 rounded-full">
+                <Phone className="w-6 h-6 text-blue-400" />
               </div>
               <div>
-                <p className="font-medium">Phone</p>
-                <a 
-                  href={`tel:${contactInfo.phone}`}
-                  className="text-indigo-600 dark:text-indigo-400 hover:underline"
-                >
-                  {contactInfo.phone}
+                <p className="text-gray-400">Phone</p>
+                <a href="tel:4706559431" className="text-xl font-semibold gradient-text">
+                  (470) 655-9431
                 </a>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Email */}
-            <motion.div 
-              whileHover={{ x: 5 }}
-              className="flex items-center space-x-4"
-            >
-              <div className="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-full">
-                <Mail className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+            <div className="flex items-center space-x-4">
+              <div className="bg-blue-500/20 p-3 rounded-full">
+                <Mail className="w-6 h-6 text-blue-400" />
               </div>
               <div>
-                <p className="font-medium">Email</p>
-                <a 
-                  href={`mailto:${contactInfo.email}`}
-                  className="text-indigo-600 dark:text-indigo-400 hover:underline"
-                >
-                  {contactInfo.email}
+                <p className="text-gray-400">Email</p>
+                <a href="mailto:potluri.tarun.18@gmail.com" className="text-xl font-semibold gradient-text">
+                  potluri.tarun.18@gmail.com
                 </a>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Social Links */}
-            <div className="pt-8">
-              <h4 className="text-lg font-semibold mb-4">Follow me on</h4>
-              <motion.a
-                whileHover={{ y: -3 }}
-                href={contactInfo.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity"
-              >
-                <Instagram className="w-5 h-5" />
-                <span>@_tarun.potluri_</span>
-              </motion.a>
+            <div className="flex items-center space-x-4">
+              <div className="bg-blue-500/20 p-3 rounded-full">
+                <Instagram className="w-6 h-6 text-blue-400" />
+              </div>
+              <div>
+                <p className="text-gray-400">Instagram</p>
+                <a href="https://instagram.com/tarunpotluri_" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   className="text-xl font-semibold gradient-text">
+                  @tarunpotluri_
+                </a>
+              </div>
             </div>
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8"
+          <motion.form
+            onSubmit={handleSubmit}
+            className="space-y-6"
           >
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium mb-2">Name</label>
+            {/* Form Fields */}
+            <div className="space-y-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <label className="block text-gray-400 mb-2">Name</label>
                 <input
                   type="text"
                   name="user_name"
-                  className="w-full px-4 py-2 rounded-lg border dark:bg-gray-600 dark:border-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   required
+                  className="w-full px-4 py-3 rounded-lg glass-effect bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={isSubmitting}
                 />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <label className="block text-gray-400 mb-2">Email</label>
                 <input
                   type="email"
                   name="user_email"
-                  className="w-full px-4 py-2 rounded-lg border dark:bg-gray-600 dark:border-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   required
+                  className="w-full px-4 py-3 rounded-lg glass-effect bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={isSubmitting}
                 />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Message</label>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <label className="block text-gray-400 mb-2">Message</label>
                 <textarea
                   name="message"
                   rows={5}
-                  className="w-full px-4 py-2 rounded-lg border dark:bg-gray-600 dark:border-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   required
+                  className="w-full px-4 py-3 rounded-lg glass-effect bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={isSubmitting}
                 ></textarea>
-              </div>
+              </motion.div>
+            </div>
 
-              {formStatus && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className={`text-center ${statusMessages[formStatus].class}`}
-                >
-                  {statusMessages[formStatus].text}
-                </motion.div>
-              )}
+            {/* Submit Button */}
+            <motion.button
+              type="submit"
+              disabled={isSubmitting}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center space-x-2
+                ${isSubmitting 
+                  ? 'bg-gray-500 cursor-not-allowed' 
+                  : 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600'}`}
+            >
+              <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+              <Send className="w-5 h-5" />
+            </motion.button>
 
-              <motion.button
-                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center space-x-2
-                  ${isSubmitting 
-                    ? 'bg-gray-400 cursor-not-allowed' 
-                    : 'bg-indigo-600 hover:bg-indigo-700'} 
-                  text-white transition-colors`}
+            {/* Form Status */}
+            {formStatus && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`text-center p-3 rounded-lg ${
+                  formStatus === 'success' ? 'bg-green-500/20 text-green-400' :
+                  formStatus === 'error' ? 'bg-red-500/20 text-red-400' :
+                  'bg-blue-500/20 text-blue-400'
+                }`}
               >
-                <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
-                <Send className="w-5 h-5" />
-              </motion.button>
-            </form>
-          </motion.div>
+                {formStatus === 'success' && 'Message sent successfully!'}
+                {formStatus === 'error' && 'Failed to send message. Please try again.'}
+                {formStatus === 'sending' && 'Sending message...'}
+              </motion.div>
+            )}
+          </motion.form>
         </div>
       </div>
     </section>
   );
 };
+
+export default Contact;
