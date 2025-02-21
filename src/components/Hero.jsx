@@ -162,7 +162,7 @@ export const Hero = () => {
           </h1>
           
           <div className="flex items-center justify-center space-x-2 text-xl md:text-2xl text-gray-300">
-            <span>Data Scientist</span>
+            <span>Data Analyst</span>
             <span className="text-purple-500">|</span>
             <span>ML Engineer</span>
             <span className="text-purple-500">|</span>
