@@ -100,23 +100,6 @@ const Contact = () => {
                 </a>
               </div>
             </div>
-
-            <div className="flex items-center space-x-4">
-              <div className="bg-blue-500/20 p-3 rounded-full">
-                <Instagram className="w-6 h-6 text-blue-400" />
-              </div>
-              <div>
-                <p className="text-gray-400">Instagram</p>
-                <a 
-                  href="https://instagram.com/_tarun.potluri_" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-xl font-semibold gradient-text"
-                >
-                  @_tarun.potluri_
-                </a>
-              </div>
-            </div>
           </motion.div>
 
           {/* Contact Form */}
