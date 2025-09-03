@@ -111,11 +111,8 @@ export default function Photography() {
               <img
                 src={active.src}
                 alt={active.caption}
-                className="w-full max-h-[85vh] object-contain rounded-2xl ring-1 ring-white/20"
+                className="w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl"
               />
-              <div className="absolute -top-10 left-0 right-0 text-center text-sm text-white/70">
-                Press <kbd className="px-1.5 py-0.5 rounded border border-white/30 text-white/90">Esc</kbd> or click outside to close
-              </div>
 
               {/* Close button */}
               <button
@@ -131,6 +128,7 @@ export default function Photography() {
                 <div className="mt-3 text-center text-white/90 text-sm">{active.caption}</div>
               )}
             </motion.div>
+
           </motion.div>
         )}
       </AnimatePresence>
