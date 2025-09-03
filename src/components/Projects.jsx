@@ -1,74 +1,71 @@
 // src/components/Projects.jsx
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
+import { ProjectCard } from "./ProjectCard";
 
 export const Projects = () => {
   const projects = [
     {
       title: "Voice Assistant",
-      description: "Developed a voice assistant using Python with libraries like SpeechRecognition and PyTorch for NLP.",
-      image: "voice.jpg",
-      tags: ["Python", "NLP", "Speech Recognition"]
+      description:
+        "Hands-free assistant in Python: real-time speech capture, intent parsing (NLP), and task execution. Built with SpeechRecognition, PyTorch, and custom NLU.",
+      image: "voice.jpg", // put in /public
+      tags: ["Python", "NLP", "SpeechRecognition"],
+      // demoUrl: "https://...", codeUrl: "https://..."
     },
     {
       title: "SLAM Algorithm",
-      description: "Advanced Simultaneous Localization and Mapping algorithm for autonomous robot navigation, achieving over 90% accuracy.",
-      image: "slam.png",
-      tags: ["Robotics", "Computer Vision", "Path Planning"]
-    }
+      description:
+        "Simultaneous Localization and Mapping pipeline for autonomous navigation. Robust feature extraction + loop closure; strong accuracy in noisy indoor maps.",
+      image: "slam.png", // put in /public
+      tags: ["Robotics", "Computer Vision", "Path Planning"],
+      // demoUrl: "https://...", codeUrl: "https://..."
+    },
   ];
 
   return (
-    <section id="projects" className="py-20 bg-[#0A0A0A]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+    <section id="projects" className="py-20 relative">
+      {/* subtle ambient tint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.12 }}
+        viewport={{ once: true }}
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(30% 30% at 15% 20%, rgba(99,102,241,0.35), transparent 60%), radial-gradient(25% 25% at 85% 30%, rgba(236,72,153,0.25), transparent 60%)",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Section heading (matches Skills/About style) */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 gradient-text"
+          className="text-center mb-12"
         >
-          Featured Projects
-        </motion.h2>
+          <div className="inline-flex items-center gap-2 text-white/70 mb-2">
+            <Sparkles className="w-4 h-4" />
+            <span className="text-[11px] tracking-wider uppercase">
+              Selected Work
+            </span>
+            <Sparkles className="w-4 h-4" />
+          </div>
 
-        <div className="space-y-20">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-            >
-              <div className="space-y-4">
-                <h3 className="text-3xl font-bold text-white">{project.title}</h3>
-                <p className="text-gray-400 text-lg">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-2 bg-blue-500/20 rounded-full text-blue-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+          <h2 className="text-4xl font-bold mb-2 gradient-text">Featured Projects</h2>
 
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="relative h-64 md:h-80 rounded-2xl overflow-hidden glass-effect"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-purple-500/30" />
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover mix-blend-overlay"
-                />
-              </motion.div>
-            </motion.div>
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+            A mix of data, AI, and realtime systems—built end-to-end with a focus on
+            reliability and clean UX.
+          </p>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="space-y-10">
+          {projects.map((p, i) => (
+            <ProjectCard key={p.title} project={p} index={i} />
           ))}
         </div>
       </div>
